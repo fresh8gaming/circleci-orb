@@ -20,13 +20,13 @@ workflows:
       - shellcheck/check:
           filters: *filters
       - orb-tools/publish:
-          orb-name: cypress-io/cypress
+          orb-name: fresh8gaming/cypress-orb
           enable-pr-comment: false
           vcs-type: << pipeline.project.type >>
           requires:
             [orb-tools/lint, orb-tools/review, orb-tools/pack, shellcheck/check]
           # Use a context to hold your publishing token.
-          context: orb-publishing
+          context: circle-orb-publishing
           filters: *filters
       # Triggers the next workflow in the Orb Development Kit.
       - orb-tools/continue:
