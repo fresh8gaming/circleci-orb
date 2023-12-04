@@ -3,7 +3,7 @@ description: >
 usage:
   version: 2.1
   orbs:
-    cypress: cypress-io/cypress@3
+    cypress: fresh8gaming/cypress-orb@3
 jobs:
   run-cypress-in-specified-node-version:
     executor:

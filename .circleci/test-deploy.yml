@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  cypress: cypress-io/cypress@dev:<<pipeline.git.revision>>
+  cypress: fresh8gaming/cypress-orb@dev:<<pipeline.git.revision>>
   orb-tools: circleci/orb-tools@11.5
 filters: &filters
   tags:
@@ -123,7 +123,7 @@ workflows:
       - orb-tools/pack:
           filters: *filters
       - orb-tools/publish:
-          orb-name: cypress-io/cypress
+          orb-name: fresh8gaming/cypress-orb
           vcs-type: << pipeline.project.type >>
           pub-type: production
           enable-pr-comment: false

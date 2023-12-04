@@ -1,4 +1,4 @@
-# Cypress CircleCI Orb [![CircleCI](https://circleci.com/gh/cypress-io/circleci-orb.svg?style=svg)](https://circleci.com/gh/cypress-io/circleci-orb) [![CircleCI Orb Version](https://badges.circleci.com/orbs/cypress-io/cypress.svg)](https://circleci.com/developer/orbs/orb/cypress-io/cypress) [![renovate-app badge][renovate-badge]][renovate-app] [![GitHub license](https://img.shields.io/github/license/cypress-io/circleci-orb?logo=license)](https://github.com/cypress-io/circleci-orb/blob/master/LICENSE.md)
+# Cypress CircleCI Orb [![CircleCI](https://circleci.com/gh/cypress-io/circleci-orb.svg?style=svg)](https://circleci.com/gh/cypress-io/circleci-orb) [![CircleCI Orb Version](https://badges.circleci.com/orbs/fresh8gaming/cypress-orb.svg)](https://circleci.com/developer/orbs/orb/fresh8gaming/cypress-orb) [![renovate-app badge][renovate-badge]][renovate-app] [![GitHub license](https://img.shields.io/github/license/cypress-io/circleci-orb?logo=license)](https://github.com/cypress-io/circleci-orb/blob/master/LICENSE.md)
 
 ## About
 
@@ -9,7 +9,8 @@ install, cache and run Cypress with very little effort.
 💡 In CircleCI, a **Job** is a collection of steps to carry out an action. A **Command** defines a sequence of steps as a map to be executed in a job. **Executors** define the underlying technology to run a job. Below are all of these options that will allow you to run your Cypress tests with an out-of-the-box or customized configuration.
 
 For the Orb Quick Start Guide and usage cases, view the CircleCI
-[Cypress orb documentation](https://circleci.com/developer/orbs/orb/cypress-io/cypress).
+[Cypress orb documentation](https://circleci.com/developer/orbs/orb/fresh8gaming/cypress-orb).
+
 ## How to enable
 
 **Note:** To use CircleCI Orbs in your projects, you need to enable some settings:
@@ -33,11 +34,11 @@ A typical project can have:
 ```yaml
 version: 2.1
 orbs:
-  # "cypress-io/cypress@3" installs the latest published
+  # "fresh8gaming/cypress-orb@3" installs the latest published
   # version "s.x.y" of the orb. We recommend you then use
-  # the strict explicit version "cypress-io/cypress@3.x.y"
+  # the strict explicit version "fresh8gaming/cypress-orb@3.x.y"
   # to lock the version and prevent unexpected CI changes
-  cypress: cypress-io/cypress@3
+  cypress: fresh8gaming/cypress-orb@3
 workflows:
   build:
     jobs:
@@ -50,44 +51,47 @@ brings simplicity and static checks of parameters to your CircleCI
 configuration.
 
 You can find more usage examples at
-[our official orb page](https://circleci.com/developer/orbs/orb/cypress-io/cypress).
+[our official orb page](https://circleci.com/developer/orbs/orb/fresh8gaming/cypress-orb).
 
 #### Arguments
 
-You can pass arguments to the `cypress/run` job to override any default behaviors. See the [full list of arguments](https://circleci.com/developer/orbs/orb/cypress-io/cypress#jobs-run).
+You can pass arguments to the `cypress/run` job to override any default behaviors. See the [full list of arguments](https://circleci.com/developer/orbs/orb/fresh8gaming/cypress-orb#jobs-run).
+
 ### Parallelization
 
-A more complex project that needs to install dependencies 
+A more complex project that needs to install dependencies
 and run tests across 4 CI machines [in parallel](https://docs.cypress.io/guides/guides/parallelization)
 may have:
 
 ```yaml
 version: 2.1
 orbs:
-  cypress: cypress-io/cypress@3
+  cypress: fresh8gaming/cypress-orb@3
 workflows:
   build:
     jobs:
       - cypress/run:
           # split specs across machines
           # record results with Cypress Cloud
-          cypress-command: 'npx cypress run --parallel --record'
-          start-command: 'npm run start'
+          cypress-command: "npx cypress run --parallel --record"
+          start-command: "npm run start"
           parallelism: 4 # use 4 CircleCI machines to finish quickly
 ```
+
 **Note:** recording test results and spec parallelization requires [Cypress Cloud](https://on.cypress.io/dashboard-introduction) account. You should also set your [record key](https://on.cypress.io/projects#Record-key) as `CYPRESS_RECORD_KEY` environment variable in the CircleCI project.
 
 ### ⚠️ Usage and Consumption
 
 There are 2 key metrics to understand when running a CI job across multiple
 machines:
-- **Consumption time** on CircleCI 
+
+- **Consumption time** on CircleCI
 - **Actual time** it takes for tests to run
 
 **Consumption time** is essentially the amount of CircleCI resources that a job requires
 to execute. For example, you may have a job that runs on 5 machines and takes 1 minute
 for all to complete. In this example it would only take 1 minute of **actual time** to execute
-all the jobs but would **consume** 5 minutes of CircleCI resources. 
+all the jobs but would **consume** 5 minutes of CircleCI resources.
 
 The Cypress CircleCI Orb
 was designed to be as simple and fast as possible for the majority of use cases.
@@ -98,10 +102,10 @@ more CircleCI resources than are necessary.
 > **Parallelization Across 5+ Machines**
 >
 > To lower your consumption time when running in parallel on more than 5 machines,
-> see [this example](https://circleci.com/developer/orbs/orb/cypress-io/cypress#usage-commands). 
+> see [this example](https://circleci.com/developer/orbs/orb/fresh8gaming/cypress-orb#usage-commands).
 >
 > Here we use the `cypress/install` and
-> `cypress/run-tests` commands separately to first install dependencies to a workspace and then run tests in parallel. 
+> `cypress/run-tests` commands separately to first install dependencies to a workspace and then run tests in parallel.
 
 ## Commands
 
@@ -113,7 +117,7 @@ Command that installs your application's node modules and Cypress dependencies.
 
 #### Arguments
 
-You can pass arguments to the `cypress/install` command to override any default behaviors. See the [full list of arguments](https://circleci.com/developer/orbs/orb/cypress-io/cypress#commands-install).
+You can pass arguments to the `cypress/install` command to override any default behaviors. See the [full list of arguments](https://circleci.com/developer/orbs/orb/fresh8gaming/cypress-orb#commands-install).
 
 ### _run-tests_
 
@@ -122,7 +126,7 @@ necessary dependencies).
 
 #### Arguments
 
-You can pass arguments to the `cypress/run-tests` command to override any default behaviors. See the [full list of arguments](https://circleci.com/developer/orbs/orb/cypress-io/cypress#commands-run-tests).
+You can pass arguments to the `cypress/run-tests` command to override any default behaviors. See the [full list of arguments](https://circleci.com/developer/orbs/orb/fresh8gaming/cypress-orb#commands-run-tests).
 
 ## Executors
 
@@ -131,18 +135,18 @@ A single Docker container used to run Cypress tests. This default executor exten
 ```yaml
 version: 2.1
 orbs:
-  cypress: cypress-io/cypress@3
+  cypress: fresh8gaming/cypress-orb@3
 executor: cypress/default
 jobs:
   - cypress/run:
 ```
 
-You can also use your own executor by passing in your own Docker image. See the full list of Cypress images on [Docker Hub](https://hub.docker.com/r/cypress/browsers/tags), or compose your own image with the [Cypress Docker Factory](https://github.com/cypress-io/cypress-docker-images#cypressfactory).
+You can also use your own executor by passing in your own Docker image. See the full list of Cypress images on [Docker Hub](https://hub.docker.com/r/cypress/browsers/tags), or compose your own image with the [Cypress Docker Factory](https://github.com/fresh8gaming/cypress-orb-docker-images#cypressfactory).
 
 ```yaml
 version: 2.1
 orbs:
-  cypress: cypress-io/cypress@3
+  cypress: fresh8gaming/cypress-orb@3
 executor:
   docker:
     image: cypress/browsers:node-16.18.1-chrome-109.0.5414.74-1-ff-109.0-edge-109.0.1518.52-1 # your Docker image here
@@ -157,7 +161,7 @@ jobs:
 ```yaml
 version: 2.1
 orbs:
-  cypress: cypress-io/cypress@3
+  cypress: fresh8gaming/cypress-orb@3
 jobs:
   install:
     executor: cypress/default
@@ -177,8 +181,8 @@ jobs:
       - attach_workspace:
           at: ~/
       - cypress/run-tests:
-          cypress-command: 'npx cypress run --parallel --record'
-          start-command: 'npm run start'
+          cypress-command: "npx cypress run --parallel --record"
+          start-command: "npm run start"
 ```
 
 ---
@@ -195,7 +199,7 @@ Cypress orb is _versioned_ so you can be sure that the configuration will _not_ 
 
 You can find all changes and published orb versions for Cypress orb at [cypress-io/circleci-orb/releases](https://github.com/cypress-io/circleci-orb/releases).
 
-We are using `cypress-io/cypress@3` version in our examples, so you get the latest published orb version 3.x.x. But we recommend locking it down to an exact version to prevent unexpected changes from suddenly breaking your builds.
+We are using `fresh8gaming/cypress-orb@3` version in our examples, so you get the latest published orb version 3.x.x. But we recommend locking it down to an exact version to prevent unexpected changes from suddenly breaking your builds.
 
 ### License
 

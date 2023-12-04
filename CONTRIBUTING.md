@@ -83,21 +83,22 @@ fix: a patch release
 
 1. Merge changes into `master` and validate the CI passes all the necessary steps.
 2. Create a Github tag of the last commit which merged to `master` and passed in CI:
-    ```shell
-    git checkout master
-    git pull origin master
-    git rev-parse HEA
-    # copy sha of the version bump commit
-    git tag -s -a vX.Y.Z -m vX.Y.Z <sha>
-    git push origin vX.Y.Z
-    ```
-3. Verify the `test-deploy` workflow passes in [CircleCi](https://app.circleci.com/pipelines/github/cypress-io/circleci-orb). This is triggered by pushing the tag to origin which handles releasing the orb changes to https://circleci.com/developer/orbs/orb/cypress-io/cypress.
+   ```shell
+   git checkout master
+   git pull origin master
+   git rev-parse HEA
+   # copy sha of the version bump commit
+   git tag -s -a vX.Y.Z -m vX.Y.Z <sha>
+   git push origin vX.Y.Z
+   ```
+3. Verify the `test-deploy` workflow passes in [CircleCi](https://app.circleci.com/pipelines/github/cypress-io/circleci-orb). This is triggered by pushing the tag to origin which handles releasing the orb changes to https://circleci.com/developer/orbs/orb/fresh8gaming/cypress-orb.
 4. Create a new [GitHub release](https://github.com/cypress-io/circleci-orb/releases).
-    - Choose the tag you created previously.
-    - Add the version number to the _Release Title_ and click the `Generate release notes` button.
-    - Check `Set as the latest release` option.
-    - Click the `Publish release` button.
+   - Choose the tag you created previously.
+   - Add the version number to the _Release Title_ and click the `Generate release notes` button.
+   - Check `Set as the latest release` option.
+   - Click the `Publish release` button.
 
-> For an example on how to publish the orb, view the 
+> For an example on how to publish the orb, view the
+
 - [CircleCI Orb-Tools Publishing Documentation](https://circleci.com/docs/creating-orbs/)
 - [CircleCI Orb-Tools Publishing Params](https://circleci.com/developer/orbs/orb/circleci/orb-tools#jobs-publish)
